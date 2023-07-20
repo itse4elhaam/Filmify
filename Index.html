@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filmify</title>
-</head>
-<body>
-    
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Filmify</title>
+	</head>
+	<body>
+		<h1>Hello World</h1>
+
+		{{ range .Films }}
+
+		<div class="film-info">
+			<h3>{{ .Title }}</h3>
+            <p> - </p>
+			<h6>{{ .Director }}</h6>
+		</div>
+
+		{{ end }}
+	</body>
 </html>
+
+<style>
+    *{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .film-info{
+        display: flex;
+        width: 100%;
+        margin-inline: auto;
+        gap: 4px;
+        justify-content: center;
+        align-items: center;
+    }
+    .film-info h3{
+        font-size: clamp(1.5rem, 2vw, 2rem);
+    }
+</style>
