@@ -56,7 +56,7 @@ func main() {
 
 		template := template.Must(template.ParseFiles("index.html"))
 
-		template.ExecuteTemplate(w, "film-info-element", film{ Title: title, Director: director, Genre: genre })
+		template.ExecuteTemplate(w, "film-info-element", film{Title: title, Director: director, Genre: genre})
 
 		// %s is replaced with the var we pass at the end
 		// filmInfoHtml := fmt.Sprintf("<div class='film-info'><h3>%s</h3><p>-</p><h6>%s</h6><p>%s</p></div>", title, director, genre)
@@ -71,6 +71,7 @@ func main() {
 	// calls handler, when / used
 	http.HandleFunc("/", handler)
 	http.HandleFunc("/add-film/", addFilmHandler)
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	// listen and serve just starts the app
 	// log fatal acts as a try catch here and logs out an error if needed

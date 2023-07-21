@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./static/styles.css">
 		<script src="https://unpkg.com/htmx.org@1.9.3"></script>
 		<script
 			src="https://unpkg.com/htmx.org@1.9.3"
@@ -12,7 +13,7 @@
 		<title>Filmify</title>
 	</head>
 	<body>
-		<h1 class="heading">Film List</h1>
+		<h1 class="heading">Filmify</h1>
 
 		<div class="film-info-container">
 			{{ range .Films }}
@@ -22,9 +23,10 @@
 
 			<div class="film-info">
 				<h3>{{ .Title }}</h3>
-				<p>-</p>
 				<h6>{{ .Director }}</h6>
 				<p>{{ .Genre }}</p>
+				<label for="watched">Watched</label>
+				<input type="checkbox" name="watched" id="watched" class="watched">
 			</div>
 
             {{ end }}
@@ -32,7 +34,6 @@
 			{{ end }}
 		</div>
 		<!-- TODO: CREATE A SELECT FOR GENRE  -->
-		<h2>Film Info</h2>
 		<form hx-post="/add-film/" hx-target=".film-info-container" hx-swap="beforeend" hx-indicator=".loading">
 			<label for="title">Name</label>
 
@@ -43,65 +44,10 @@
 			<label for="genre">Genre</label>
 
 			<input type="text" name="genre" id="genre" />
-			<button type="submit">
-                <span class="loading htmx-indicator">loading</span>
+			<button type="submit ">
+                <span class="loading htmx-indicator">...</span>
                 Submit
             </button>
 		</form>
 	</body>
 </html>
-
-<style>
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-		font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-	}
-	h1.heading {
-		font-size: 4rem;
-		text-align: center;
-		margin-top: 20px;
-	}
-
-	.film-info {
-		margin-bottom: 20px;
-		border: 1px solid #ccc;
-		padding: 10px;
-	}
-
-	h3 {
-		font-size: 1.5em;
-	}
-
-	p {
-		margin-bottom: 5px;
-	}
-
-	h6 {
-		font-size: 1em;
-	}
-
-	form {
-		margin-top: 20px;
-	}
-
-	label {
-		font-size: 1em;
-		margin-bottom: 5px;
-	}
-
-	input {
-		width: 100%;
-		padding: 5px;
-		border: 1px solid #ccc;
-	}
-
-	button {
-		background-color: #000;
-		color: #fff;
-		padding: 5px;
-		border: none;
-		cursor: pointer;
-	}
-</style>

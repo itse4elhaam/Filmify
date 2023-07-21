@@ -1,0 +1,130 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+    background-color: #f1f1f1;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.heading {
+    text-align: center;
+    font-size: clamp(3rem, 5vw, 5rem);
+    margin-block: 2rem;
+    color: #333;
+}
+
+.film-info-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.film-info {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: max(20vw, max-content);
+    margin: 10px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.film-info h3 {
+    font-size: clamp(2rem,3vw,4rem);
+    margin: 0;
+}
+
+.film-info h6,
+.film-info p {
+    margin: 5px 0;
+}
+.film-info p{
+    background-color: wheat;
+    padding-inline: 12px;
+    padding-block: 8px;
+    border-radius: 16px;
+    transition: opacity 300ms ease-in;
+}
+/* Hover Effect */
+.film-info:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade In Animation */
+.film-info-container > .film-info {
+    animation: fadeInUp 0.5s ease;
+    animation-fill-mode: both;
+}
+
+#watched{
+    accent-color: #333;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.film-info:has(#watched:checked) > *{
+    opacity: 0.25;
+}
+
+
+
+/* Form Styling */
+h2 {
+    margin-top: 40px;
+    font-size: 24px;
+    color: #333;
+}
+
+form {
+    width: clamp(20rem, 60vw, 40rem);
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+    margin-block: 2rem;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+form button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: center;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
